@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 /**
@@ -12,8 +13,9 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode(of = { "id" })
 public class DoorReadingDto {
-    private Long id;
+    private String id;
     private Byte value;
     private LocalDateTime createTime;
     private String doorName;

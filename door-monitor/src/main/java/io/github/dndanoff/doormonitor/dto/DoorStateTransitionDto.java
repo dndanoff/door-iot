@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 /**
@@ -12,9 +13,10 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode(of = { "id" })
 public class DoorStateTransitionDto {
-    private Long id;
-    private Long doorId;
+    private String id;
+    private String doorId;
     private Byte active;
     private Byte value;
     private LocalDateTime createTime;

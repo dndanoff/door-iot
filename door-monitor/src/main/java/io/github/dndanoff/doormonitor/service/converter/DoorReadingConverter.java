@@ -1,4 +1,4 @@
-package io.github.dndanoff.doormonitor.service;
+package io.github.dndanoff.doormonitor.service.converter;
 
 import org.springframework.stereotype.Service;
 
@@ -9,7 +9,7 @@ import io.github.dndanoff.doormonitor.entity.DoorReading;
  * DoorReadingConverter
  */
 @Service
-public class DoorReadingConverter {
+public class DoorReadingConverter implements GenericObjectConverter<DoorReading, DoorReadingDto>{
 
     public DoorReadingDto entityToDto(DoorReading entity){
         if(entity == null){

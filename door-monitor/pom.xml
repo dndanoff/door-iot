@@ -123,6 +123,25 @@
 				</executions>
 			</plugin>
 			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>properties-maven-plugin</artifactId>
+				<version>1.0-alpha-2</version>
+				<executions>
+					<execution>
+						<id>read-application-properties</id>
+						<phase>initialize</phase>
+						<goals>
+							<goal>read-project-properties</goal>
+						</goals>
+						<configuration>
+							<files>
+								<file>${project.basedir}/src/main/resources/db/db-plugin.properties</file>
+							</files>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
@@ -231,7 +250,7 @@
 									</jdbc>
 									<generator>
 										<database>
-											<name>org.jooq.util.h2.H2Database</name>
+											<name>org.jooq.meta.h2.H2Database</name>
 											<includes>.*</includes>
 											<excludes></excludes>
 											<inputSchema>${config.db.schema}</inputSchema>
@@ -265,27 +284,6 @@
 			<id>devops</id>
 			<build>
 				<plugins>
-
-					<plugin>
-						<groupId>org.codehaus.mojo</groupId>
-						<artifactId>properties-maven-plugin</artifactId>
-						<version>1.0-alpha-2</version>
-						<executions>
-							<execution>
-								<id>read-application-properties</id>
-								<phase>initialize</phase>
-								<goals>
-									<goal>read-project-properties</goal>
-								</goals>
-								<configuration>
-									<files>
-										<file>${project.basedir}/src/main/resources/db/db-plugin.properties</file>
-									</files>
-								</configuration>
-							</execution>
-						</executions>
-					</plugin>
-
 					<plugin>
 						<groupId>org.flywaydb</groupId>
 						<artifactId>flyway-maven-plugin</artifactId>
@@ -294,7 +292,7 @@
 							<user>${config.db.username}</user>
 							<password>${config.db.password}</password>
 							<schemas>
-								<schema>${config.db.db.schema}</schema>
+								<schema>${config.db.schema}</schema>
 							</schemas>
 							<locations>${config.db.flyway.migration.location}</locations>
 							<url>${config.db.url}</url>

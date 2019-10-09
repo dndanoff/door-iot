@@ -2,6 +2,7 @@ package io.github.dndanoff.doormonitor.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 /**
@@ -10,8 +11,9 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode(of = { "id" })
 public class DoorDto {
-    private Long id;
+    private String id;
     private String name;
     private DoorStateTransitionDto state;
 }
