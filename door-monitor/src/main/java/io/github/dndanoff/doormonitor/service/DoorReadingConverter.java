@@ -18,8 +18,8 @@ public class DoorReadingConverter {
 
         DoorReadingDto dto = new DoorReadingDto();
         dto.setId(entity.getId());
-        dto.setState(entity.getState());
-        dto.setTime(entity.getTime());
+        dto.setValue(entity.getValue());
+        dto.setCreateTime(entity.getCreateTime());
         dto.setDoorName(entity.getDoorName());
 
         return dto;
@@ -32,8 +32,8 @@ public class DoorReadingConverter {
 
         DoorReading entity = new DoorReading();
         entity.setId(dto.getId());
-        entity.setState(dto.getState());
-        entity.setTime(dto.getTime());
+        entity.setValue(dto.getValue());
+        entity.setCreateTime(dto.getCreateTime());
         entity.setDoorName(dto.getDoorName());
 
         return entity;

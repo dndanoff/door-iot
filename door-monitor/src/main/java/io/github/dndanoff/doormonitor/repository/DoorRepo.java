@@ -6,7 +6,9 @@ import org.jooq.DSLContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import io.github.dndanoff.doormonitor.entity.Door;
 import io.github.dndanoff.doormonitor.entity.DoorReading;
+import io.github.dndanoff.doormonitor.entity.DoorStateTransition;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -14,31 +16,28 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 @Repository
-public class DoorReadingRepo{
-   
+public class DoorRepo {
+
     private final DSLContext create;
 
     @Autowired
-    public DoorReadingRepo(DSLContext create) {
+    public DoorRepo(DSLContext create) {
         this.create = create;
     }
 
-    public void saveAll(List<DoorReading> readings){
-
-    }
-
-    public void save(DoorReading reading){
-
-    }
-
-    public List<DoorReading> findAllUnprocessedReadings(){
+    public List<Door> findAll() {
         return null;
     }
 
-    public void update(DoorReading reading){
-
+    public Door findById(Long id) {
+        return null;
     }
-    public void updateAll(List<DoorReading> readings){
+
+    public Door findByName(String name) {
+        return null;
+    }
+
+    public void addNewStateTransition(DoorStateTransition stateTransition){
 
     }
 

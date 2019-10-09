@@ -3,17 +3,14 @@ package io.github.dndanoff.doormonitor.entity;
 import java.time.LocalDateTime;
 
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 /**
- * DoorReading
+ * DoorState
  */
-@Data
-@NoArgsConstructor
-public class DoorReading {
+public class DoorStateTransition {
     private Long id;
+    private Long doorId;
+    private Byte active;
     private Byte value;
-    private Byte processed;
-    private String doorName;
     private LocalDateTime createTime;
 }

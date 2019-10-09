@@ -7,14 +7,15 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * DoorReading
+ * DoorState
  */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class DoorReadingDto {
+public class DoorStateTransitionDto {
     private Long id;
+    private Long doorId;
+    private Byte active;
     private Byte value;
     private LocalDateTime createTime;
-    private String doorName;
 }

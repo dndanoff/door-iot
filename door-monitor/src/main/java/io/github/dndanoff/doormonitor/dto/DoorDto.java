@@ -1,20 +1,17 @@
 package io.github.dndanoff.doormonitor.dto;
 
-import java.time.LocalDateTime;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * DoorReading
+ * Door
  */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class DoorReadingDto {
+public class DoorDto {
     private Long id;
-    private Byte value;
-    private LocalDateTime createTime;
-    private String doorName;
+    private String name;
+    private DoorStateTransitionDto state;
 }
