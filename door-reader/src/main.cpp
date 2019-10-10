@@ -3,12 +3,14 @@
 #include <HTTPClient.h>
  
 const int doorA = 2;
+const int doorB = 4;
 
 const char* ssid = "Stage Guest";
 const char* password =  "12345678";
 
 void setup() {
-  pinMode(doorA, INPUT);  
+  pinMode(doorA, INPUT);
+  pinMode(doorB, INPUT);
 
   Serial.begin(115200);
   delay(4000);   //Delay needed before calling the WiFi.begin
@@ -23,10 +25,11 @@ void setup() {
 void loop() {
  if(WiFi.status()== WL_CONNECTED){   //Check WiFi connection status
    HTTPClient http;
-   byte state = digitalRead(doorA);   
-   http.begin("http://MY_HOST/v1/readings");  //Specify destination for HTTP request
+   byte stateA = digitalRead(doorA);
+   byte stateB = digitalRead(doorB);   
+   http.begin("http://MY_HOST:8080/api/v1/readings/multiple");  //Specify destination for HTTP request
    http.addHeader("Content-Type", "application/json");             //Specify content-type header
-   int httpResponseCode = http.POST((String)"{ \"doorReadings\":[{\"state\": "+state+"}, \"doorName\":\"doorA\"]}");   //Send the actual POST request
+   int httpResponseCode = http.POST((String)"{ \"doorReadings\":[{\"value\": "+stateA+", \"doorName\":\"doorA\"}, {\"value\": "+stateB+", \"doorName\":\"doorB\"}]}");   //Send the actual POST request
    if(httpResponseCode>0){
     String response = http.getString();                       //Get the response to the request
     Serial.println(httpResponseCode);   //Print return code

@@ -13,6 +13,19 @@ public class AppConfig {
 
 	private final Db db = new Db();
 	private final Jooq jooq = new Jooq();
+	private final Security security = new Security();
+
+	@ConfigurationProperties(prefix = "security")
+	@Data
+	public class Security {
+		private Integer passwordEncoderStrength;
+		private String realmName;
+		private String adminRealmName;
+		private String clientName;
+		private String clientPassword;
+		private String adminName;
+		private String adminPassword;
+	}
 
 	@ConfigurationProperties(prefix = "jooq")
 	@Data
