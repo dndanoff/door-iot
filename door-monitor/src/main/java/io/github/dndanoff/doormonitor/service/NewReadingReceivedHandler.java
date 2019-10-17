@@ -1,5 +1,6 @@
 package io.github.dndanoff.doormonitor.service;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -43,7 +44,7 @@ public class NewReadingReceivedHandler {
         for(Map.Entry<String, List<DoorReading>> entry : unprocessedReadings.entrySet()){
             Door door = doorRepo.findByName(entry.getKey());
             if(door == null){
-                door = new Door(UUID.randomUUID().toString(), entry.getKey(), null);
+                door = new Door(UUID.randomUUID().toString(), entry.getKey(), null, null);
                 doorRepo.save(door);
             }
 
@@ -61,7 +62,10 @@ public class NewReadingReceivedHandler {
                         transitions.add(door.getState());
                     }
                     door.setState(transition);
+                    door.setLastUpdated(LocalDateTime.now());
                     transitions.add(transition);
+                }else {
+                    door.setLastUpdated(LocalDateTime.now());
                 }
                 reading.setProcessed((byte)1);
             }
@@ -71,6 +75,8 @@ public class NewReadingReceivedHandler {
                 doorRepo.updateStateTransition(originalDoorState);
                 transitions.remove(originalDoorState);
             }
+
+            doorRepo.update(door);
         }
         doorRepo.saveAllStateTransition(transitions.stream().collect(Collectors.toList()));
         readingRepo.updateAll(unprocessedReadings.entrySet().stream().flatMap(e -> e.getValue().stream()).collect(Collectors.toList()));

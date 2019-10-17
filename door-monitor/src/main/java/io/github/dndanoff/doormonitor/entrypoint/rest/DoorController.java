@@ -22,7 +22,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @CrossOrigin
 @RestController
-@RequestMapping("/v1/doors")
+@RequestMapping("/api/v1/doors")
 public class DoorController {
 
     private final DoorRepo doorRepo;

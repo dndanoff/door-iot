@@ -1,5 +1,7 @@
 package io.github.dndanoff.doormonitor.dto;
 
+import java.time.LocalDateTime;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -15,5 +17,6 @@ import lombok.NoArgsConstructor;
 public class DoorDto {
     private String id;
     private String name;
+    private LocalDateTime lastUpdated;
     private DoorStateTransitionDto state;
 }

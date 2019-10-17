@@ -76,6 +76,13 @@ public class DoorRepo {
         return convertRecordToDoor(record);
     }
 
+    public Door update(Door door){
+        log.debug("Calling update with params: door={}", door);
+        DoorRecord record = create.newRecord(Tables.DOOR, door);
+        record.update();
+        return convertRecordToDoor(record);
+    }
+
     public void saveAllStateTransition(List<DoorStateTransition> stateTransitions){
         log.debug("Calling saveAllStateTransition with params: stateTransitions={}", stateTransitions);
         create.batchInsert(stateTransitions.stream().map(s -> create.newRecord(Tables.DOOR_STATE_TRANSITION, s)).collect(Collectors.toList())).execute();

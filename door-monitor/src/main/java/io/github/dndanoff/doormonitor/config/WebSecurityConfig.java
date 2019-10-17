@@ -60,8 +60,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.csrf().disable()
 			.authorizeRequests()
 				.antMatchers("/actuator/**").hasAnyRole(ApplicationRoles.ADMIN.getRoleName())
-				.antMatchers(HttpMethod.POST, "/v1/door-readings/**").hasAnyRole(ApplicationRoles.SENSOR_CLIENT.getRoleName())
-				.antMatchers(HttpMethod.GET, "/v1/doors/**").permitAll()
+				.antMatchers(HttpMethod.POST, "/api/v1/door-readings/**").hasAnyRole(ApplicationRoles.SENSOR_CLIENT.getRoleName())
+				.antMatchers(HttpMethod.GET, "/api/v1/doors/**").permitAll()
+				.antMatchers("/", "/index.html", "/images/**", "/js/**", "/css/**").permitAll()
+				.antMatchers("/api/**").authenticated()
 				.anyRequest().authenticated();
 
 		http.headers().frameOptions().disable();

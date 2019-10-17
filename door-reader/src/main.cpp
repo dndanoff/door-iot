@@ -27,8 +27,10 @@ void loop() {
    HTTPClient http;
    byte stateA = digitalRead(doorA);
    byte stateB = digitalRead(doorB);   
-   http.begin("http://MY_HOST:8080/api/v1/readings/multiple");  //Specify destination for HTTP request
-   http.addHeader("Content-Type", "application/json");             //Specify content-type header
+   http.begin("https://iot.test.dreamix.eu/api/v1/door-readings/multiple");  //Specify destination for HTTP request
+   http.addHeader("Content-Type", "application/json");
+   http.addHeader("Authorization", "Basic ZG9vcnJlYWRlckBkcm14OkMyNDQxMDEwMjAxOQ==");             //Specify content-type header
+   Serial.println((String)"{ \"doorReadings\":[{\"value\": "+stateA+", \"doorName\":\"doorA\"}, {\"value\": "+stateB+", \"doorName\":\"doorB\"}]}");
    int httpResponseCode = http.POST((String)"{ \"doorReadings\":[{\"value\": "+stateA+", \"doorName\":\"doorA\"}, {\"value\": "+stateB+", \"doorName\":\"doorB\"}]}");   //Send the actual POST request
    if(httpResponseCode>0){
     String response = http.getString();                       //Get the response to the request

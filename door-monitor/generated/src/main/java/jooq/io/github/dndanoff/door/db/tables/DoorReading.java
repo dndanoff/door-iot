@@ -41,7 +41,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class DoorReading extends TableImpl<DoorReadingRecord> {
 
-    private static final long serialVersionUID = 1030643260;
+    private static final long serialVersionUID = 664730002;
 
     /**
      * The reference instance of <code>door_monitor.DOOR_READING</code>
@@ -80,6 +80,11 @@ public class DoorReading extends TableImpl<DoorReadingRecord> {
      * The column <code>door_monitor.DOOR_READING.DOOR_NAME</code>.
      */
     public final TableField<DoorReadingRecord, String> DOOR_NAME = createField("DOOR_NAME", org.jooq.impl.SQLDataType.VARCHAR(255).nullable(false), this, "");
+
+    /**
+     * The column <code>door_monitor.DOOR_READING.LAST_UPDATED</code>.
+     */
+    public final TableField<DoorReadingRecord, LocalDateTime> LAST_UPDATED = createField("LAST_UPDATED", org.jooq.impl.SQLDataType.LOCALDATETIME.nullable(false).defaultValue(org.jooq.impl.DSL.field("CURRENT_TIMESTAMP", org.jooq.impl.SQLDataType.LOCALDATETIME)), this, "");
 
     /**
      * Create a <code>door_monitor.DOOR_READING</code> table reference

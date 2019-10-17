@@ -32,7 +32,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @CrossOrigin
 @RestController
-@RequestMapping("/v1/door-readings")
+@RequestMapping("/api/v1/door-readings")
 public class DoorReadingController {
 
     private final ApplicationEventPublisher publisher;
