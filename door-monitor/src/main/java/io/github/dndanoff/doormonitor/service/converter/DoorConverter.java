@@ -27,6 +27,7 @@ public class DoorConverter implements GenericObjectConverter<Door, DoorDto> {
         DoorDto dto = new DoorDto();
         dto.setId(entity.getId());
         dto.setName(entity.getName());
+        dto.setLastUpdated(entity.getLastUpdated());
         dto.setState(coorStateConverter.entityToDto(entity.getState()));
 
         return dto;
@@ -40,6 +41,7 @@ public class DoorConverter implements GenericObjectConverter<Door, DoorDto> {
         Door entity = new Door();
         entity.setId(dto.getId());
         entity.setName(dto.getName());
+        entity.setLastUpdated(dto.getLastUpdated());
         entity.setState(coorStateConverter.dtoToEntity(dto.getState()));
 
         return entity;

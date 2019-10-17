@@ -23,14 +23,13 @@ import javax.annotation.Generated;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class DoorReading implements Serializable {
 
-    private static final long serialVersionUID = 1915731150;
+    private static final long serialVersionUID = 1328209363;
 
     private String        id;
     private Byte          value;
     private LocalDateTime createTime;
     private Byte          processed;
     private String        doorName;
-    private LocalDateTime lastUpdated;
 
     public DoorReading() {}
 
@@ -40,7 +39,6 @@ public class DoorReading implements Serializable {
         this.createTime = value.createTime;
         this.processed = value.processed;
         this.doorName = value.doorName;
-        this.lastUpdated = value.lastUpdated;
     }
 
     public DoorReading(
@@ -48,15 +46,13 @@ public class DoorReading implements Serializable {
         Byte          value,
         LocalDateTime createTime,
         Byte          processed,
-        String        doorName,
-        LocalDateTime lastUpdated
+        String        doorName
     ) {
         this.id = id;
         this.value = value;
         this.createTime = createTime;
         this.processed = processed;
         this.doorName = doorName;
-        this.lastUpdated = lastUpdated;
     }
 
     public String getId() {
@@ -99,14 +95,6 @@ public class DoorReading implements Serializable {
         this.doorName = doorName;
     }
 
-    public LocalDateTime getLastUpdated() {
-        return this.lastUpdated;
-    }
-
-    public void setLastUpdated(LocalDateTime lastUpdated) {
-        this.lastUpdated = lastUpdated;
-    }
-
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder("DoorReading (");
@@ -116,7 +104,6 @@ public class DoorReading implements Serializable {
         sb.append(", ").append(createTime);
         sb.append(", ").append(processed);
         sb.append(", ").append(doorName);
-        sb.append(", ").append(lastUpdated);
 
         sb.append(")");
         return sb.toString();

@@ -9,6 +9,7 @@ import io.github.dndanoff.door.db.Indexes;
 import io.github.dndanoff.door.db.Keys;
 import io.github.dndanoff.door.db.tables.records.DoorRecord;
 
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 
@@ -40,7 +41,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Door extends TableImpl<DoorRecord> {
 
-    private static final long serialVersionUID = 1251144371;
+    private static final long serialVersionUID = 952208423;
 
     /**
      * The reference instance of <code>door_monitor.DOOR</code>
@@ -64,6 +65,11 @@ public class Door extends TableImpl<DoorRecord> {
      * The column <code>door_monitor.DOOR.NAME</code>.
      */
     public final TableField<DoorRecord, String> NAME = createField("NAME", org.jooq.impl.SQLDataType.VARCHAR(255).nullable(false), this, "");
+
+    /**
+     * The column <code>door_monitor.DOOR.LAST_UPDATED</code>.
+     */
+    public final TableField<DoorRecord, LocalDateTime> LAST_UPDATED = createField("LAST_UPDATED", org.jooq.impl.SQLDataType.LOCALDATETIME.nullable(false).defaultValue(org.jooq.impl.DSL.field("CURRENT_TIMESTAMP", org.jooq.impl.SQLDataType.LOCALDATETIME)), this, "");
 
     /**
      * Create a <code>door_monitor.DOOR</code> table reference

@@ -5,7 +5,7 @@ const element = (el, props = {}) => {
 }
 
 $( document ).ready(function() {
-var jqxhr = $.get("http://localhost:8080/api/v1/doors", function(data) {
+var jqxhr = $.get("http://iot.test.dreamix.eu/api/v1/doors", function(data) {
         console.log(data);
         if(!data || data.length === 0){
             $('#root').html('<h2 class="text-center">There is no data to show.</h2>');

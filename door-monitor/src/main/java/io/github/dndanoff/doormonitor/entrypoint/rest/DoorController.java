@@ -20,7 +20,7 @@ import lombok.extern.slf4j.Slf4j;
  * DoorReadingController
  */
 @Slf4j
-@CrossOrigin
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/v1/doors")
 public class DoorController {
